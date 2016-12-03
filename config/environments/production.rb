@@ -1,9 +1,9 @@
 Webapp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  config.time_zone = 'Mountain Time (US & Canada)'
+  config.time_zone = ENV['TIME_ZONE']
 
   #Asset Mailer Host!
-  config.action_mailer.asset_host = 'https://boulder-food-rescue-robot.herokuapp.com'
+  config.action_mailer.asset_host = ENV['ASSET_HOST']
 
   config.action_mailer.smtp_settings = {
     address: "smtp.sendgrid.net",
@@ -49,7 +49,7 @@ Webapp::Application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  config.force_ssl = ENV['FORCE_SSL']
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
@@ -87,9 +87,9 @@ Webapp::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.middleware.use ExceptionNotifier,
-    email_prefix: '[BFR ROBOT ERROR] ',
-    sender_address: %{"BFR Robot" <notifier@boulderfoodrescue.org>},
-    exception_recipients: %w{rylanb@gmail.com cphillips@smallwhitecube.com}
+    email_prefix: '[FDN ROBOT ERROR] ',
+    sender_address: ENV['EXCEPTION_SENDER_ADDRESS'],
+    exception_recipients: ENV['EXCEPTION_EMAIL_RECIPIENTS']
 
   ExceptionNotifier::Rake.configure
 
