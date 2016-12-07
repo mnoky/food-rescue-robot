@@ -21,6 +21,7 @@ gem 'rails_12factor'
 gem 'json'
 
 # lets us use the ubiquitous jquery javascript library
+gem 'sass', '~> 3.2.10'
 gem 'jquery-rails', '2.1.4'
 gem 'sass-rails', '~> 3.2.6'
 gem 'coffee-rails', '~> 3.2.1'
